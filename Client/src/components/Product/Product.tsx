@@ -1,29 +1,26 @@
-import NameProduct from './ComponenteProducto/NombreProducto';
-import DescriptionProduct from './ComponenteProducto/DescripcionProducto';
-import PriceProduct from './ComponenteProducto/PrecioProducto';
-import SkuProduct from './ComponenteProducto/SkuProducto';
-import StockProduct from './ComponenteProducto/StockProducto';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
-//import CardImg from 'react-bootstrap/CardImg'
 
-const Product = () => {
+const Product = ( props: any ) => {
+
+    const {name, description, price, sku, stock, url} = props
+
     return (
         <>
     <Card style={{ width: '18rem' }} className='m-3'>
       <Card.Img variant="top" src="" />
-      <img src="./src/assets/Img/coffee.jpg" alt="Imagen de Café de autor" />
+      <img src={url} alt="Imagen de Café de autor" />
       <Card.Body>
-        <Card.Title><NameProduct/></Card.Title>
+        <Card.Title><h6>{name}</h6></Card.Title>
         <Card.Text>
-          <DescriptionProduct/>
+          <p>Descripción: {description}</p>
         </Card.Text>
       </Card.Body>
       <ListGroup className="list-group-flush">
-        <ListGroup.Item><PriceProduct/></ListGroup.Item>
-        <ListGroup.Item><SkuProduct/></ListGroup.Item>
-        <ListGroup.Item><StockProduct/></ListGroup.Item>
+        <ListGroup.Item><p>Precio: ${price}</p></ListGroup.Item>
+        <ListGroup.Item><p>SKU: {sku}</p></ListGroup.Item>
+        <ListGroup.Item><p>Cantidad: {stock}</p></ListGroup.Item>
       </ListGroup>
       <Card.Body>
       <Button variant="primary" className='m-1'>Ver Producto</Button>
